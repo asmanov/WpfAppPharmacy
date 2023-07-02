@@ -11,36 +11,34 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0">CATALOG</TextBlock>
-            <ListBox Grid.Row="1">
+
+        <StackPanel Grid.Column="0">
+            <TextBlock>Catalog</TextBlock>
+            <ListBox ItemsSource="{Binding Medicines}" SelectedItem="{Binding SelectedMedicine}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
                             <TextBlock Text="{Binding Path=Name}"/>
-                            <TextBlock Text="{Binding Path=Discription}"/>           
+                            <TextBlock Text="{Binding Path=Description}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </Grid>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="10*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <TextBox Grid.Row="0">Search</TextBox>
-            <Button Grid.Row="1">Search</Button>
-            <TextBlock TextWrapping="Wrap"/>
-            <StackPanel Grid.Row="2">
-                <TextBlock/>
-                <TextBlock TextWrapping="NoWrap"/>
-            </StackPanel>
-        </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+            <TextBox Text="{Binding NameForSearch, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="Search" Command="{Binding SearchCommand}"/>
+            <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedMedicine}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=Name}"/>
+                            <TextBlock Text="{Binding Path=FullDiscription}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
     </Grid>
 </Window>

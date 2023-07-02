@@ -10,6 +10,11 @@ namespace WpfAppPharmacy.Model
 {
     public class Medicine : INotifyPropertyChanged
     {
+		public Medicine()
+		{
+
+		}
+
 		private int id;
 
 		public int Id
@@ -43,9 +48,9 @@ namespace WpfAppPharmacy.Model
 				OnPropertyChanged("Description");
 			}
 		}
-		private int fullDiscription;
+		private string fullDiscription;
 
-		public int FullDiscription
+		public string FullDiscription
 		{
 			get { return fullDiscription; }
 			set 

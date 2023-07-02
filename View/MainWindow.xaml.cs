@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAppPharmacy.ViewModel;
 
 namespace WpfAppPharmacy
 {
@@ -23,6 +24,7 @@ namespace WpfAppPharmacy
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new AplicationViewModel();
         }
     }
 }
