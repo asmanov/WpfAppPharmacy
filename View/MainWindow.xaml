@@ -1,44 +1,84 @@
-﻿<Window x:Class="WpfAppPharmacy.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppPharmacy"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="WpfAppPharmacy.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1">
+            <TextBlock><Run Text="Catalog"/></TextBlock>
+            <ScrollViewer>
+                <StackPanel >
 
-        <StackPanel Grid.Column="0">
-            <TextBlock>Catalog</TextBlock>
-            <ListBox ItemsSource="{Binding Medicines}" SelectedItem="{Binding SelectedMedicine}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Path=Name}"/>
-                            <TextBlock Text="{Binding Path=Description}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                    <ListBox ItemsSource="{Binding Medicines}" SelectedItem="{Binding SelectedMedicine}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    
+                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding Description}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </ScrollViewer>
         </StackPanel>
 
-        <StackPanel Grid.Column="1">
-            <TextBox Text="{Binding NameForSearch, UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Content="Search" Command="{Binding SearchCommand}"/>
+        <StackPanel Grid.Column="1" Grid.Row="1">
             <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedMedicine}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
+
                         <StackPanel>
-                            <TextBlock Text="{Binding Path=Name}"/>
-                            <TextBlock Text="{Binding Path=FullDiscription}"/>
+                            
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text="{Binding FullDiscription}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
+        <materialDesign:ColorZone Grid.ColumnSpan="2" Padding="16" Mode="PrimaryMid">
+            <DockPanel>
+                
+                <StackPanel materialDesign:RippleAssist.IsCentered="True" Orientation="Horizontal">
+                    <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
+                    <TextBlock Margin="16,0,0,0" VerticalAlignment="Center" Text="Pharmacy catalog" />
+                    <materialDesign:ColorZone Margin="16,0,0,0" Padding="8,4,8,4" Panel.ZIndex="1" materialDesign:ElevationAssist.Elevation="Dp2" CornerRadius="2" Mode="Standard">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button Command="{Binding SearchCommand}" Style="{StaticResource MaterialDesignToolButton}">
+                                <materialDesign:PackIcon Kind="Search" Opacity=".56" />
+                            </Button>
+                            <TextBox Text="{Binding NameForSearch, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" MinWidth="200" Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            materialDesign:HintAssist.Hint="Build a search bar"
+                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                            BorderThickness="0" />
+                           
+                        </Grid>
+                    </materialDesign:ColorZone>
+                    <Button Command="{Binding SearchCommand}" Margin="8,0,0,0" Panel.ZIndex="0" Style="{StaticResource MaterialDesignToolForegroundButton}">
+                        <materialDesign:PackIcon Kind="Send" />
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:ColorZone>
     </Grid>
 </Window>

@@ -65,6 +65,19 @@ namespace WpfAppPharmacy.ViewModel
             {
                 new Medicine() {Name="Med1", Description = "Description1", FullDiscription = "FullDescription1"},
                 new Medicine() {Name="Med2", Description = "Description2", FullDiscription = "FullDescription2"},
+                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
                 new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"}
             };
             Items = new ObservableCollection<Medicine>();
