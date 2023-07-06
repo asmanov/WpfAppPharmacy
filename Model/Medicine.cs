@@ -60,6 +60,18 @@ namespace WpfAppPharmacy.Model
 			}
 		}
 
+		private string imgSource;
+
+		public string ImgSource
+		{
+			get { return imgSource; }
+			set 
+			{ 
+				imgSource = value;
+                OnPropertyChanged("ImgSource");
+            }
+		}
+
 
 		public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

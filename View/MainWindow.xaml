@@ -16,47 +16,65 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="1">
-            <TextBlock><Run Text="Catalog"/></TextBlock>
-            <ScrollViewer>
-                <StackPanel >
 
-                    <ListBox ItemsSource="{Binding Medicines}" SelectedItem="{Binding SelectedMedicine}">
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Visible">
+            <StackPanel >
+                <ListBox x:Name="Catalog"  ItemsSource="{Binding Medicines}" SelectedItem="{Binding SelectedMedicine}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
+                            <Border Background="#FF8ED0D8" BorderBrush="#FF612D2D" CornerRadius="5,5,5,5" BorderThickness="2,2,2,2">
                                 <StackPanel>
+
+                                    <TextBlock Text="{Binding Name}" Style="{StaticResource MaterialDesignHeadline5TextBlock}" TextWrapping="WrapWithOverflow"/>
+                                    <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}" />
+                                    <TextBlock Text="{Binding Description}" Style="{StaticResource MaterialDesignBody2TextBlock}" TextWrapping="WrapWithOverflow"/>
+                                
                                     
-                                    <TextBlock Text="{Binding Name}"/>
-                                    <TextBlock Text="{Binding Description}"/>
                                 </StackPanel>
-                            </DataTemplate>
+                            </Border>
+                        </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                </StackPanel>
-            </ScrollViewer>
-        </StackPanel>
+            </StackPanel>
+        </ScrollViewer >
 
-        <StackPanel Grid.Column="1" Grid.Row="1">
-            <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedMedicine}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
+        <ScrollViewer Grid.Column="1" Grid.Row="1">
+            <StackPanel>
+                <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedMedicine}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
 
-                        <StackPanel>
-                            
-                            <TextBlock Text="{Binding Name}"/>
-                            <TextBlock Text="{Binding FullDiscription}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </StackPanel>
+                            <GroupBox Margin="16" Header="{Binding Name}" Style="{StaticResource MaterialDesignCardGroupBox}">
+                                <GroupBox.HeaderTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Width="32" Height="32"  VerticalAlignment="Center" Kind="ImageArea" />
+                                            <TextBlock Margin="8,0,0,0" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSubtitle1TextBlock}" Text="{Binding}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GroupBox.HeaderTemplate>
+
+                                <StackPanel>
+                                    <Image Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding ImgSource}" Width="200" Height="100" />
+                                    <TextBlock Margin="6,6,6,6" Text="{Binding FullDiscription}" TextWrapping="WrapWithOverflow" />
+                                </StackPanel>
+
+
+                            </GroupBox>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </ScrollViewer>
+        
         <materialDesign:ColorZone Grid.ColumnSpan="2" Padding="16" Mode="PrimaryMid">
             <DockPanel>
                 
                 <StackPanel materialDesign:RippleAssist.IsCentered="True" Orientation="Horizontal">
                     <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
                     <TextBlock Margin="16,0,0,0" VerticalAlignment="Center" Text="Pharmacy catalog" />
-                    <materialDesign:ColorZone Margin="16,0,0,0" Padding="8,4,8,4" Panel.ZIndex="1" materialDesign:ElevationAssist.Elevation="Dp2" CornerRadius="2" Mode="Standard">
+                    <materialDesign:ColorZone Margin="16,0,0,0" Padding="8,4,8,4" Panel.ZIndex="1" materialDesign:ElevationAssist.Elevation="Dp4" CornerRadius="2" Mode="Standard">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />

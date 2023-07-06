@@ -61,25 +61,32 @@ namespace WpfAppPharmacy.ViewModel
 
         public AplicationViewModel()
         {
-            Medicines = new ObservableCollection<Medicine>()
+            Medicines = new ObservableCollection<Medicine>();
+            using(PharmacyDbContext dbContext = new PharmacyDbContext())
             {
-                new Medicine() {Name="Med1", Description = "Description1", FullDiscription = "FullDescription1"},
-                new Medicine() {Name="Med2", Description = "Description2", FullDiscription = "FullDescription2"},
-                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
-                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
-                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
-                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
-                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
-                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
-                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
-                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
-                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
-                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
-                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
-                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
-                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
-                new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"}
-            };
+                foreach (Medicine item in dbContext.medecines)
+                {
+                    Medicines.Add(item);
+                }
+            }
+            //{
+            //    new Medicine() {Name="Med1", Description = "Description1", FullDiscription = "FullDescription1"},
+            //    new Medicine() {Name="Med2", Description = "Description2 1234567891012134444444444444444", FullDiscription = "FullDescription2 aaaaaaaaaaaaaaaaaaaaaaaa1111111111aaaaaaaaaaaa", ImgSource="https://1sa.com.ua/media/catalog/product/cache/2/image/95x117/9df78eab33525d08d6e5fb8d27136e95/_/-/_-_-_-_-_10_front.jpg"},
+            //    new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+            //    new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+            //    new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+            //    new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+            //    new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+            //    new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+            //    new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+            //    new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+            //    new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+            //    new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+            //    new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+            //    new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+            //    new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"},
+            //    new Medicine() {Name="Med3", Description = "Description3", FullDiscription = "FullDescription3"}
+            //};
             Items = new ObservableCollection<Medicine>();
         }
         
